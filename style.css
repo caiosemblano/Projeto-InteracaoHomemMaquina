@@ -239,7 +239,8 @@ p {
   vertical-align: middle
 }
 
-button {
+#prevBtn,
+#nextBtn {
   position: absolute;
   top: 30%;
   transform: translateY(-50%);
