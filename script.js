@@ -424,3 +424,183 @@ customElements.define('aulas-component', AulasComponent);
       console.log(usuario);
       console.log(armarios);
     }
+
+// VAGAS DE ESTÃGIO E TRAINEE
+
+const vagas = [
+    {
+        id: 1,
+        titulo: "EstÃ¡gio em Desenvolvimento Web",
+        empresa: "Tech Solutions",
+        area: "software",
+        tipo: "estagio",
+        descricao: "Atuar no desenvolvimento de aplicaÃ§Ãµes web utilizando React e Node.js."
+    },
+    {
+        id: 2,
+        titulo: "Trainee em Engenharia de Redes",
+        empresa: "Connect Telecom",
+        area: "telecom",
+        tipo: "trainee",
+        descricao: "Programa de trainee focado em infraestrutura de redes e 5G."
+    },
+    {
+        id: 3,
+        titulo: "EstÃ¡gio em Engenharia ClÃ­nica",
+        empresa: "Hospital Santa Vida",
+        area: "biomedica",
+        tipo: "estagio",
+        descricao: "Acompanhamento de manutenÃ§Ã£o de equipamentos mÃ©dicos."
+    },
+    {
+        id: 4,
+        titulo: "EstÃ¡gio em AutomaÃ§Ã£o Industrial",
+        empresa: "IndÃºstria 4.0",
+        area: "automacao",
+        tipo: "estagio",
+        descricao: "ProgramaÃ§Ã£o de CLPs e sistemas supervisÃ³rios."
+    },
+    {
+        id: 5,
+        titulo: "Desenvolvedor Mobile Jr (Trainee)",
+        empresa: "AppMasters",
+        area: "software",
+        tipo: "trainee",
+        descricao: "Desenvolvimento de aplicativos Android e iOS."
+    },
+    {
+        id: 6,
+        titulo: "EstÃ¡gio em Testes de Software",
+        empresa: "QualitySoft",
+        area: "software",
+        tipo: "estagio",
+        descricao: "ExecuÃ§Ã£o de testes manuais e automatizados."
+    },
+    {
+        id: 7,
+        titulo: "Analista de TelecomunicaÃ§Ãµes Jr",
+        empresa: "TeleBrasil",
+        area: "telecom",
+        tipo: "trainee",
+        descricao: "Acompanhamento de projetos de infraestrutura de telecomunicaÃ§Ãµes."
+    },
+    {
+        id: 8,
+        titulo: "EstÃ¡gio em Fibras Ã“pticas",
+        empresa: "FiberTech",
+        area: "telecom",
+        tipo: "estagio",
+        descricao: "Suporte em projetos de instalaÃ§Ã£o e manutenÃ§Ã£o de redes Ã³pticas."
+    },
+    {
+        id: 9,
+        titulo: "Trainee em Dispositivos MÃ©dicos",
+        empresa: "MedTech Brasil",
+        area: "biomedica",
+        tipo: "trainee",
+        descricao: "ParticipaÃ§Ã£o no desenvolvimento de equipamentos biomÃ©dicos."
+    },
+    {
+        id: 10,
+        titulo: "EstÃ¡gio em Imagens MÃ©dicas",
+        empresa: "DiagnoScan",
+        area: "biomedica",
+        tipo: "estagio",
+        descricao: "Apoio em processos de calibraÃ§Ã£o de equipamentos de imagem."
+    },
+    {
+        id: 11,
+        titulo: "Trainee em RobÃ³tica Industrial",
+        empresa: "AutoBot Systems",
+        area: "automacao",
+        tipo: "trainee",
+        descricao: "Desenvolvimento de sistemas robÃ³ticos para linhas de produÃ§Ã£o."
+    },
+    {
+        id: 12,
+        titulo: "EstÃ¡gio em Controle de Processos",
+        empresa: "ProcessControl Inc",
+        area: "automacao",
+        tipo: "estagio",
+        descricao: "ProgramaÃ§Ã£o e monitoramento de sistemas de controle SCADA."
+    },
+    {
+        id: 13,
+        titulo: "Desenvolvedor Backend (Trainee)",
+        empresa: "CloudNine Tech",
+        area: "software",
+        tipo: "trainee",
+        descricao: "Desenvolvimento de APIs REST e microserviÃ§os em Java/Spring."
+    },
+    {
+        id: 14,
+        titulo: "EstÃ¡gio em DevOps",
+        empresa: "InfraTech",
+        area: "software",
+        tipo: "estagio",
+        descricao: "Apoio em CI/CD, containerizaÃ§Ã£o Docker e orquestraÃ§Ã£o Kubernetes."
+    },
+    {
+        id: 15,
+        titulo: "Trainee em Sistemas Embarcados",
+        empresa: "EmbeddedPro",
+        area: "automacao",
+        tipo: "trainee",
+        descricao: "Desenvolvimento de firmware para sistemas embarcados IoT."
+    }
+];
+
+function renderVagas(vagasParaRenderizar) {
+    const listaVagas = document.getElementById('lista-vagas');
+    listaVagas.innerHTML = ''; // Limpa a lista
+
+    if (vagasParaRenderizar.length === 0) {
+        listaVagas.innerHTML = '<p>Nenhuma vaga encontrada com os filtros selecionados.</p>';
+        return;
+    }
+
+    vagasParaRenderizar.forEach(vaga => {
+        const card = document.createElement('div');
+        card.classList.add('vaga-card');
+
+        const badgeClass = vaga.tipo === 'estagio' ? 'badge-estagio' : 'badge-trainee';
+        const tipoLabel = vaga.tipo === 'estagio' ? 'EstÃ¡gio' : 'Trainee';
+
+        card.innerHTML = `
+            <div class="vaga-header">
+                <h3 class="vaga-title">${vaga.titulo}</h3>
+                <p class="vaga-company">${vaga.empresa}</p>
+            </div>
+            <div class="vaga-body">
+                <p class="vaga-desc">${vaga.descricao}</p>
+            </div>
+            <div class="vaga-footer">
+                <span class="badge ${badgeClass}">${tipoLabel}</span>
+                <button class="btn-detalhes" onclick="alert('Detalhes da vaga: ${vaga.titulo}')">Ver Detalhes</button>
+            </div>
+        `;
+        listaVagas.appendChild(card);
+    });
+}
+
+function filtrarVagas() {
+    const areaSelecionada = document.getElementById('filtro-area').value;
+    const tipoSelecionado = document.getElementById('filtro-tipo').value;
+
+    const vagasFiltradas = vagas.filter(vaga => {
+        const matchArea = areaSelecionada === 'todas' || vaga.area === areaSelecionada;
+        const matchTipo = tipoSelecionado === 'todos' || vaga.tipo === tipoSelecionado;
+        return matchArea && matchTipo;
+    });
+
+    renderVagas(vagasFiltradas);
+}
+
+function limparFiltros() {
+    document.getElementById('filtro-area').value = 'todas';
+    document.getElementById('filtro-tipo').value = 'todos';
+    renderVagas(vagas);
+}
+
+// Inicializa as vagas
+renderVagas(vagas);

@@ -323,7 +323,7 @@ button {
 .p_lable {
   font-family: "Arimo", sans-serif;
   font-optical-sizing: auto;
-  font-weight: bold;
+  font-weight: 400;
   font-style: normal;
   font-size: 11px;
   color: white;
